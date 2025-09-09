@@ -8,18 +8,16 @@ interface FetchMoviesResponse {
 export const fetchMovies = async (query: string): Promise<Movie[]> => {
   const myKey = import.meta.env.VITE_API_KEY;
 
-  axios.defaults.baseURL = "https://api.themoviedb.org/3";
-
-  const response = await axios.get<FetchMoviesResponse>("/search/movie", {
-    params: {
-      query,
-      page: 1,
-    },
-    headers: {
-      Authorization: `Bearer ${myKey}`,
-      accept: "application/json",
-    },
-  });
+  const response = await axios.get<FetchMoviesResponse>(
+    "https://api.themoviedb.org/3/search/movie",
+    {
+      params: { query, page: 1 },
+      headers: {
+        Authorization: `Bearer ${myKey}`,
+        accept: "application/json",
+      },
+    }
+  );
 
   return response.data.results;
 };
