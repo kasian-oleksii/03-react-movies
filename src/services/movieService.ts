@@ -6,7 +6,7 @@ interface FetchMoviesResponse {
 }
 
 export const fetchMovies = async (query: string): Promise<Movie[]> => {
-  const myKey = import.meta.env.VITE_API_KEY;
+  const myKey = import.meta.env.VITE_TMDB_TOKEN;
 
   axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
